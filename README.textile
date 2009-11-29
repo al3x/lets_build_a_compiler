@@ -1,9 +1,15 @@
-h1. Introduction
+h1. Let's Build A Compiler!
+
+h2. Introduction
 
 This an implementation of a simple compiler, built roughly in accordance with a "tutorial by Crenshaw, 1988":http://compilers.iecc.com/crenshaw/. An ASCII copy of the tutorial is included in the 'reference' directory.
 
-Crenshaw implements his compiler in a particular edition of Pascal, long since obsolete. I'll attempt to implement mine in Scala.
+Crenshaw implements his compiler in a particular edition of Pascal, long since obsolete. I'll attempt to implement mine in Scala (2.7.7).
 
-h1. Authors
+h2. Progress
 
-"Alex Payne":http://al3x.net/ (at the behest of "Steve Jenson":http://saladwithsteve.com/).
+* 2009Nov28 -
+
+h2. Authors
+
+"Alex Payne":http://al3x.net/ (at the behest and encouragement of "Steve Jenson":http://saladwithsteve.com/).
