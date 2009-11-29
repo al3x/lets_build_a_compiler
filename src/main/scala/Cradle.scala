@@ -1,14 +1,15 @@
 package net.al3x.letsbuildacompiler
 
-import java.nio.CharBuffer
+import scala.io.Source
 
 
-class Cradle(input: CharBuffer) {
+class Cradle(input: Source) {
   var look: Char = ' '
 
   // Read New Character From Input Stream
-  def getChar = {
-    look = input.get
+  def getChar: Char = {
+    look = input.next
+    look
   }
 
   // Report an Error
@@ -44,26 +45,45 @@ class Cradle(input: CharBuffer) {
   // char.isDigit
 
   // Get an Identifier
-  def getName(c: Char) = {
+  def getName: Char = {
     if (!look.isLetter) {
       expected("Name")
+    } else {
+      return look
     }
-
     getChar
   }
 
   // Get a Number
-  def getNum(c: Char) = {
+  def getNum: Char = {
     if (!look.isDigit) {
       expected("Integer")
+    } else {
+      return look
     }
-
     getChar
   }
 
-  def emit(s: String) = print("\t" + s)
-  def emitLn(s: String) = println(emit(s))
+  // Output a String with Tab
+  def emit(s: String) = "\t" + s
 
+  // Output a String with Tab and CRLF
+  def emitLn(s: String) = emit(s)
+
+  // Parse and Translate a Math Expression
+  def expression = {
+    emitLn("MOVE #" + getNum + ",D0")
+  }
+
+  // Initialize
   def init = getChar
+}
 
+
+object Cradle {
+  def main(args: Array[String]) {
+    val c = new Cradle(Source.fromInputStream(System.in))
+    c.init
+    c.expression
+  }
 }
